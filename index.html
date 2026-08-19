@@ -1,1 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VendAI - Crie anúncios com IA</title>
 
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #0b0b0f;
+    color: white;
+}
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+}
+
+header {
+    padding: 25px 0;
+    text-align: center;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #7c3aed;
+}
+
+.hero {
+    text-align: center;
+    padding: 60px 10px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.hero h1 span {
+    color: #7c3aed;
+}
+
+.hero p {
+    color: #aaa;
+    font-size: 18px;
+    margin-bottom: 35px;
+}
+
+.card {
+    background: #15151c;
+    padding: 30px;
+    border-radius: 18px;
+    margin-bottom: 50px;
+    border: 1px solid #292936;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    margin-top: 18px;
+    font-weight: bold;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    background: #0d0d12;
+    color: white;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 16px;
+    border: none;
+    border-radius: 10px;
+    background: #7c3aed;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #6d28d9;
+}
+
+.resultado {
+    display: none;
+    margin-top: 30px;
+    background: #0d0d12;
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #333;
+}
+
+.resultado h2 {
+    margin-bottom: 20px;
+}
+
+.resultado h3 {
+    color: #a78bfa;
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+.resultado p {
+    color: #ddd;
+    line-height: 1.6;
+    white-space: pre-line;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #777;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+        <div class="logo">Vend<span>AI</span></div>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>Crie anúncios que <span>vendem</span></h1>
+        <p>Coloque seu produto e gere ideias de anúncios em segundos.</p>
+
+        <div class="card">
+
+            <label>Produto</label>
+            <input id="produto" placeholder="Ex: Aspirador portátil">
+
+            <label>Preço</label>
+            <input id="preco" placeholder="Ex: R$ 79,90">
+
+            <label>Público-alvo</label>
+            <input id="publico" placeholder="Ex: Donos de carros">
+
+            <label>Plataforma</label>
+            <select id="plataforma">
+                <option>Instagram</option>
+                <option>TikTok</option>
+                <option>WhatsApp</option>
+            </select>
+
+            <label>Estilo</label>
+            <select id="estilo">
+                <option>Persuasivo</option>
+                <option>Viral</option>
+                <option>Profissional</option>
+                <option>Descontraído</option>
+            </select>
+
+            <button onclick="gerarAnuncio()">🔥 GERAR ANÚNCIO</button>
+
+            <div class="resultado" id="resultado">
+
+                <h2>🚀 Seu anúncio</h2>
+
+                <h3>🔥 Título</h3>
+                <p id="titulo"></p>
+
+                <h3>📝 Legenda</h3>
+                <p id="legenda"></p>
+
+                <h3>🎬 Roteiro</h3>
+                <p id="roteiro"></p>
+
+                <h3>💬 CTA</h3>
+                <p id="cta"></p>
+
+                <h3>#️⃣ Hashtags</h3>
+                <p id="hashtags"></p>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<footer>
+    VendAI © 2026 — Seu produto entra. Seu anúncio sai.
+</footer>
+
+<script>
+
+function gerarAnuncio() {
+
+    const produto = document.getElementById("produto").value;
+    const preco = document.getElementById("preco").value;
+    const publico = document.getElementById("publico").value;
+    const plataforma = document.getElementById("plataforma").value;
+
+    if (!produto || !preco || !publico) {
+        alert("Preencha produto, preço e público-alvo.");
+        return;
+    }
+
+    document.getElementById("resultado").style.display = "block";
+
+    document.getElementById("titulo").innerText =
+        produto + " que todo " + publico + " precisa conhecer! 🔥";
+
+    document.getElementById("legenda").innerText =
+        "🚨 Você ainda não conhece o " + produto + "?\n\n" +
+        "Uma opção prática para quem é " + publico + ".\n\n" +
+        "Por apenas " + preco + ".\n\n" +
+        "Quer saber mais? Chame agora! 👇";
+
+    document.getElementById("roteiro").innerText =
+        "Cena 1: Mostre o " + produto + ".\n\n" +
+        "Cena 2: Mostre o problema que ele ajuda a resolver.\n\n" +
+        "Cena 3: Mostre o produto sendo utilizado.\n\n" +
+        "Cena 4: Mostre o preço de " + preco + ".\n\n" +
+        "Final: Chame o cliente para comprar.";
+
+    document.getElementById("cta").innerText =
+        "👉 Clique agora e peça mais informações sobre o " + produto + ".";
+
+    document.getElementById("hashtags").innerText =
+        "#achadinhos #ofertas #promoção #compras #vendasonline #" +
+        produto.replace(/\s/g, "").toLowerCase();
+
+}
+
+</script>
+
+</body>
+      </html>
